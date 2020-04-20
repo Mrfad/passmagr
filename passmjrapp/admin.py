@@ -1,19 +1,24 @@
 from django.contrib import admin
-from .models import *
-from .forms import *
+from .models import PasswordAccount
+from .forms import CreateUserForm, CreatePassForm, UpdatePassForm
 from import_export.admin import ImportExportModelAdmin
 
+
+
+
+
+class CreatePassAdmin(admin.ModelAdmin):
+    list_display = ['title',
+                  'username',
+                  'password',
+                  'url',
+                  'additional_notes']
+    form = CreatePassForm
+    list_filter = ['user']
+    search_fields = ['title']
+
+
 @admin.register(PasswordAccount)
-class ViewAdmin(ImportExportModelAdmin):
+class ViewAdmin(ImportExportModelAdmin, CreatePassAdmin):
     pass
-
-
-# class CreatePassAdmin(admin.ModelAdmin):
-#     list_display = ['title',
-#                   'username',
-#                   'password',
-#                   'url',
-#                   'additional_notes']
-#     form = CreatePassForm
-#     list_filter = ['username']
-#     search_fields = ['title']
+# admin.site.register(PasswordAccount, CreatePassAdmin)
