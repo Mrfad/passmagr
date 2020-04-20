@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home |
+{% endblock %}
+
+
+{% block content %}
+
+<div class="col-md">
+  <div class="card card-body">
+    <form method="get">
+
+      {{myFilter.form}}
+      <button class="btn btn-sm btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+		<div class="container-fluid wrapper table-box">
+        <table class="sortable-table table table-striped table-bordered table-hover cellpading="10" cellspacing="0" width="100%">
+          <thead class="table-primary">
+            <tr>
+              <!-- <th class="th-sm"><a href="{% url 'home' %}">Num</a></th> -->
+
+              <th class="th-sm numeric-sort">Num</th>
+              <th class="th-sm">Title</th>
+              <th hidden class="th-sm">Account</th>
+              <th hidden class="th-sm">Password</th>
+              <th hidden class="th-sm">URL</th>
+              <th hidden class="th-sm">Notes</th>
+              <th hidden class="th-sm">Date of creation</th>
+              <th hidden class="th-sm">Modification Date</th>
+              <th class="th-sm">Update</th>
+              <th hidden class="th-sm">Delete</th>
+              <th hidden class="th-sm">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for account in accounts %}
+            <tr>
+              <td class="break">{{forloop.counter}}</td>
+              <td class="break"><a href="{% url 'view' account.id %}">{{account.title}}</td>
+              <td hidden class="break">{{account.username}}</td>
+              <td hidden>{{account.password}}</td>
+              <td hidden>{{account.url}}</td>
+              <td hidden>{{account.additional_notes}}</td>
+              <td hidden>{{account.creation_date}}</td>
+              <td hidden>{{account.last_modified}}</td>
+              <td> <a class="btn btn-sm btn-info" href="{% url 'update' account.id %}">Update</a></td>
+              <td hidden> <a class="btn btn-sm btn-danger" href="{% url 'delete' account.id %}">Delete</a></td>
+              <td hidden> <a class="btn btn-sm btn-primary" href="{% url 'view' account.id %}">View</a></td>
+            </tr>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+  </div>
+</div>
+    
+    <script>
+        $('#zero_config').DataTable();
+    </script>
+
+ {% endblock %}
