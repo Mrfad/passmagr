@@ -141,7 +141,6 @@ def passwordcreate(request):
     form = CreatePassForm()
     for x in range(length):
         password += random.choice(characters)
-        print(password)
     return render(request,'create.html', {'password': password, 'form':form})
 
 
