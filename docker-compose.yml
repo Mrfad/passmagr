@@ -2,19 +2,22 @@ version: '3.9'
 
 services:
   web:
-    build: .
-    container_name: passmgr
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: passmgr_web
     restart: always
     command: /start
+    volumes:
+      - .:/app
+      - static_volume_pass:/pass_static
     ports:
       - 7001:7000
-    volumes:
-      - .:/code
 
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/static
+      - static_volume_pass:/pass_static
     restart: always
     ports:
       - 81:81
@@ -22,4 +25,4 @@ services:
       - web
 
 volumes:
-  static_volume:
+  static_volume_pass:
