@@ -35,7 +35,11 @@ Home |
               <td class="break">{{forloop.counter}}</td>
               <td class="break"><a href="{% url 'view' account.id %}">{{account.title}}</td>
               <td class="break">{{account.username}}</td>
-              <td >{{account.password}}</td>
+              <td>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" data-toggle="password" value="{{account.password}}">
+                </div>
+              </td>
               <td>{{account.url}}</td>
               <td hidden>{{account.additional_notes}}</td>
               <td >{{account.creation_date}}</td>
@@ -55,6 +59,16 @@ Home |
  {% endblock %}
 
 {% block js %}
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+
+
+<script type="text/javascript">
+  $("#password").password('toggle');
+</script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.0/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/cr-1.5.0/fh-3.1.4/r-2.2.2/datatables.min.css"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
