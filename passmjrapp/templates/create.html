@@ -1,45 +1,45 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
  {% block content %}
 
 
 <div class="container text-center jumbotron">
-    <h2>Do you want to generate a random paddword?</h2>
+    <h2>Do you want to generate a random password?</h2>
     <a class="btn btn-info" href="{% url 'passgenerate' %}">Generate Password</a>              
     {% if password %}
     <h2 class="alert alert-success">{{password}}</h2>
-     {% endif %}         
-   <div class="panel-heading">
-    <h3 class="panel-title">Create A New Account</h3>
+        {% endif %}         
+    <div class="panel-heading">
+        <h3 class="panel-title">Create A New Account</h3>
     </div>
                 
-            <form method="POST">
-            {% csrf_token %}
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
 
-                                {{form.as_p}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-
-
- 
-                    </div>
-
-                    <div class="row">
-                        <hr />
-                        <div class="col-lg-4">
-                            <button type="submit" class="btn btn-info">Submit</button>
-                            <a class="btn btn-warning" href="javascript:window.history.back()">Cancel</a>
+                            {{form|crispy}}
                         </div>
                     </div>
                 </div>
-            </form>
+
+                <div class="row">
+
+
+
+                </div>
+
+                <div class="row">
+                    <hr />
+                    <div class="col-lg-4">
+                        <button type="submit" class="btn btn-info">Submit</button>
+                        <a class="btn btn-warning" href="javascript:window.history.back()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
 </div>
 
         

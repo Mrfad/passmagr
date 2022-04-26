@@ -14,8 +14,13 @@ class CreatePassForm(ModelForm):
         model = PasswordAccount
         fields = ['title',
                   'username',
+                  'username_id',
                   'password',
                   'url',
+                  'pin',
+                  'rim',
+                  'subscription_number',
+                  'otp',
                   'additional_notes']
 
 
@@ -24,8 +29,13 @@ class UpdatePassForm(ModelForm):
         model = PasswordAccount
         fields = ['title',
                   'username',
+                  'username_id',
                   'password',
                   'url',
+                  'pin',
+                  'rim',
+                  'subscription_number',
+                  'otp',
                   'additional_notes']
 
 # class CreatePassForm(forms.Form):
